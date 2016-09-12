@@ -20,6 +20,8 @@ const { width, height } = Dimensions.get('window');
 import routes from '../../routes';
 import appStyles from '../../styles/app'
 import Header from './Header'
+import Scene from './Scene';
+import BackButton from '../Buttons/BackButton'
 
 export class FirestackNavigator extends React.Component {
   static propTypes: {
@@ -27,43 +29,66 @@ export class FirestackNavigator extends React.Component {
     navigate: PropTypes.func.isRequired,
   };
 
-  _render(props) {
-    const {scene} = props;
+  _render(transitionProps) {
     return (
-      <View style={appStyles.container} key={scene.key}>
-        {this._renderHeader(props)}
-        {props.scenes
-              .map(scene => this._renderScene({ ...props, scene }))}
+      <View style={styles.container}>
+        {this._renderHeader(transitionProps)}
+        {transitionProps.scenes
+              .map(scene => {
+                const sceneProps = {
+                  ...transitionProps,
+                  scene,
+                };
+                return this._renderScene(sceneProps)
+              })}
       </View>
-    );
+    )
   }
 
   _renderScene(sceneProps) {
     const {scene} = sceneProps;
-    const {route} = scene;
-    const definedRoute = this._lookupRoute(route);
+    const route = this._lookupRoute(scene.route);
+    const {actions, currentUser, navigationState} = this.props;
+    const {noHeader} = route;
 
-    let Component = definedRoute.Component;
+    const createElement = (scene, Component) => {
+      const componentProps = Object.assign({}, sceneProps, {
+        actions, route, currentUser
+      })
+      return (
+        <Scene
+          {...componentProps}
+          key={scene.key}
+          navigate={this._navigate.bind(this)}>
+            <Component />
+        </Scene>
+      )
+    }
+
+    let Component = route.Component;
     if (!Component) {
-      Component = (
-        <View style={styles.scene} key={sceneProps.scene.key}>
-          <Text>Render scene</Text>
+      Component = (props) => (
+        <View style={styles.sceneWithHeader}>
+          <Text>{route.key} Scene not yet implemented</Text>
         </View>
       )
     }
 
-    return React.createElement(Component, {
-      ...this.props,
-      ...sceneProps,
-      key: scene.key,
-      route: definedRoute
-    });
+    return (
+      <View key={scene.key} style={[appStyles.scene, !noHeader && styles.sceneWithHeader]}>
+        {createElement(scene, Component)}
+      </View>
+    )
+  }
+
+  _navigate() {
+    console.log('navigate called in Navigator')
   }
 
   _renderHeader(sceneProps) {
     const {actions, navigationState} = this.props;
     const {scene} = sceneProps;
-    let route = this._lookupRoute(scene.route);
+    let {route} = scene;
 
     if (!route.noHeader) {
       // Route not implemented yet, use a default header
@@ -76,6 +101,7 @@ export class FirestackNavigator extends React.Component {
       const {headerStyle} = route;
       let headerProps = Object.assign({}, sceneProps, {
         route,
+        actions,
         style: headerStyle || {}
       });
 
@@ -88,10 +114,16 @@ export class FirestackNavigator extends React.Component {
       }
 
       const {leftComponent, rightComponent} = route;
-      headerProps.renderLeftComponent = leftComponent ?
-          leftComponent.bind(null, actions) : () => (<View />)
-      headerProps.renderRightComponent = rightComponent ?
-          rightComponent.bind(null, actions) : () => (<View />)
+
+      if (leftComponent) {
+        headerProps.renderLeftComponent = 
+          leftComponent.bind(null, actions);
+      }
+
+      if (rightComponent) {
+        headerProps.renderRightComponent =
+          rightComponent.bind(null, actions);
+      }
 
       return (<Header {...headerProps} />)
     }
@@ -107,37 +139,48 @@ export class FirestackNavigator extends React.Component {
     return {easing, duration: 200}
   }
 
+  _back() {
+    console.log('_back called in Navigator');
+    const {actions} = this.props;
+    const {navigation} = actions;
+    navigation.pop();
+  }
+
   render() {
-    const {navigationState} = this.props;
+    const {
+      navigationState,
+      scenes
+    } = this.props;
+    const stackKey = `stack_${'home'}`
+
     return (
-      <NavigationTransitioner
-        navigationState={navigationState}
-        render={(transitionProps) => this._render(transitionProps)}
-        configureTransition={this._configureTransition}
-      />
+      <View style={styles.container}>
+        <NavigationCardStack
+          key={stackKey}
+          onNavigateBack={this._back.bind(this)}
+          navigationState={navigationState}
+          renderHeader={this._renderHeader.bind(this)}
+          renderScene={this._renderScene.bind(this)}
+          style={styles.navigatorCardStack}
+        />
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  navigatorCardStack: {
+    flex: 20
   },
   scene: {
-    backgroundColor: '#E9E9EF',
-    bottom: 0,
-    flex: 1,
-    left: 0,
-    position: 'absolute',
-    right: 0,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 0},
-    shadowOpacity: 0.4,
-    shadowRadius: 10,
-    top: 0,
+    backgroundColor: 'white'
   },
-  scrollView: {
-    flex: 1,
-  },
+  sceneWithHeader: {
+    marginTop: 0
+  }
 })
 
 export default FirestackNavigator

@@ -19,10 +19,12 @@ export class App extends React.Component {
   render() {
     const {navigationState} = this.props;
     return (
-      <FirestackNavigator
-        {...this.props}
-        navigationState={navigationState}
-        navigate={this._navigate.bind(this)} />
+      <View style={styles.container}>
+        <FirestackNavigator
+          {...this.props}
+          navigationState={navigationState}
+          navigate={this._navigate.bind(this)} />
+      </View>
     )
   }
 }

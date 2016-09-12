@@ -8,7 +8,7 @@ import env from '../../config/environment'
 import * as currentUser from './modules/currentUser'
 import * as navigation from './modules/navigation'
 
-export const configureStore = (initialState = {}) => {
+export const configureStore = (userInitialState = {}) => {
   const middleware = applyMiddleware(thunk);
 
   const firestack = new Firestack(env.firestack)
@@ -19,6 +19,11 @@ export const configureStore = (initialState = {}) => {
     firestack: (state) => firestack
   });
 
+  let initialState = 
+    Object.assign({}, {
+      navigation: navigation.initialState
+    })
+
   const store = createStore(
     rootReducer,
     initialState,
@@ -28,7 +33,8 @@ export const configureStore = (initialState = {}) => {
 
   const dispatch = store.dispatch;
   const actions = {
-    currentUser: bindActionCreators(currentUser.actions, dispatch)
+    currentUser: bindActionCreators(currentUser.actions, dispatch),
+    navigation: bindActionCreators(navigation.actions, dispatch),
   }
 
   return {store,actions}

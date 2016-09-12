@@ -6,7 +6,7 @@ export type ComponentExample = {
 const ComponentExamples: Array<ComponentExample> = [
   {
     key: 'Database',
-    module: require('./Databases')
+    module: require('./Database')
   }
 ];
 

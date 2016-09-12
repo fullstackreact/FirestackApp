@@ -1,3 +1,7 @@
+/*
+ * Convert an object with nested keys into a flat list
+ * of objects by key
+ */
 export const toList = (root) => {
   const visitRoute = (key, node, hash={}, prefix=[]) => {
     const keyPrefix = prefix.concat(key);

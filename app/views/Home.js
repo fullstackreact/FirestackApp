@@ -1,12 +1,24 @@
 import React from 'react';
 import {
+  NavigationExperimental,
   View,
   StyleSheet,
   Text,
-  ListView
+  ListView,
+  TouchableHighlight,
+  Dimensions
 } from 'react-native'
 
+const {
+  StateUtils: NavigationStateUtils
+} = NavigationExperimental;
+
+const {height, width} = Dimensions.get('window')
 import appStyles from '../styles/app';
+import {connect} from 'react-redux';
+
+// Routes
+import {routes, exampleRoutes} from '../routes'
 
 export class Home extends React.Component {
   constructor(props) {
@@ -17,20 +29,30 @@ export class Home extends React.Component {
       rowHasChanged: this._rowHasChanged.bind(this)
     })
 
-    this.state = {dataSource}
+    const routeRows = Object.keys(exampleRoutes)
+                        .reduce((sum, name) => sum.concat({
+                          key: name, 
+                          title: name.toUpperCase(),
+                          route: routes[name]
+                        }), []);
+
+    this.state = {
+      dataSource: dataSource.cloneWithRows(routeRows)
+    }
   }
 
   render() {
     return (
-      <View style={appStyles.container}>
+      <View style={[appStyles.scene, styles.wrapper]}>
         <ListView
             ref="listView"
             scrollRenderAheadDistance={0}
-            automaticallyAdjustContentInsets={false}
+            automaticallyAdjustContentInsets={true}
             dataSource={this.state.dataSource}
             renderSectionHeader={this._renderSectionHeader.bind(this)}
             renderRow={this._renderRow.bind(this)}
             renderFooter={this._renderFooter.bind(this)}
+            renderSeparator={this._renderSeparator.bind(this)}
             />
       </View>
     )
@@ -39,24 +61,6 @@ export class Home extends React.Component {
    /*
    * List stuff
    */
-   _getListViewData(events) {
-    let data = {};
-    let sectionIds = [];
-
-    events.items
-      .map((event) => {
-        const time = moment(event.startAt).fromNow();
-        let section = event.name;
-        if (sectionIds.indexOf(time) === -1) {
-          sectionIds.push(time);
-          data[time] = [];
-        }
-      data[time].push(event);
-    });
-
-    return {data, sectionIds};
-  }
-
    _sectionHeaderHasChanged(oldSection, newSection) {
      return oldSection !== newSection;
    }
@@ -74,24 +78,49 @@ export class Home extends React.Component {
      )
    }
 
-   _renderRow(rowData) {
+  _renderSeparator(sectionID: number, rowID: number, adjacentRowHighlighted: bool) {
+    return (
+      <View
+        key={`${sectionID}-${rowID}`}
+        style={{
+          height: adjacentRowHighlighted ? 4 : 1,
+          backgroundColor: adjacentRowHighlighted ? '#3B5998' : '#CCCCCC',
+        }}
+      />
+    );
+  }
+
+   _renderRow(rowData, sectionID, rowID, highlightRow) {
      return (
-       <EventItem
-         key={rowData.uid}
-         event={rowData} />
+      <TouchableHighlight onPress={() => {
+          this._pressRow(rowData.key);
+        }}>
+         <View style={appStyles.row}>
+          <Text>{rowData.title}</Text>
+         </View>
+      </TouchableHighlight>
      )
    }
+
+    _pressRow(rowKey) {
+      const {actions} = this.props;
+      const {navigation} = actions;
+      navigation.push(rowKey);
+    }
 
    _renderFooter() {
     return (
       <View style={[appStyles.container, styles.scrollSpinner]}>
-        <Text>Why not create an event?</Text>
+        <Text></Text>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1
+  },
   sectionSeparator: {
     height: 1,
     backgroundColor: "#eeeeee",
@@ -105,4 +134,8 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Home;
+const mapStateToProps = (state) => ({
+  firestack: state.firestack
+})
+
+export default connect(mapStateToProps)(Home);

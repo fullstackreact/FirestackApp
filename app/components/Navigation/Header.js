@@ -1,9 +1,9 @@
 import React, { PropTypes as T } from 'react'
 
 import {
-  StyleSheet,
   View,
   Text,
+  StyleSheet,
   NavigationExperimental
 } from 'react-native'
 
@@ -15,22 +15,26 @@ import colors from '../../styles/colors'
 
 export class Header extends React.Component {
   render() {
+    const {style} = this.props;
+    const headerStyle = [styles.header, style];
     return (
       <NavigationHeader
         {...this.props}
-        style={styles.header}
+        style={headerStyle}
         onNavigateBack={this._onBack.bind(this)} />
       )
   }
 
   _onBack() {
     // on back
+    const {actions} = this.props;
+    const {navigation} = actions;
+    navigation.pop();
   }
 }
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: colors.white
   }
 })
 
