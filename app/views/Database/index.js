@@ -15,14 +15,15 @@ export class Database extends React.Component {
     const {firestack} = this.props;
     const db = firestack.database;
     this.db = db;
+    db.setPersistence(true);
   }
 
-  // componentDidMount() {
-  //   const ref = this.db.ref('chat-messages').child('roomId');
-  //   ref.orderByKey().limitToLast(3).once('value').then(snapshot => {
-  //     console.log('snapshot ->', snapshot);
-  //   });
-  // }
+  componentDidMount() {
+    const ref = this.db.ref('chat-messages').child('roomId');
+    ref.orderByKey().limitToLast(3).once('value').then(snapshot => {
+      console.log('snapshot ->', snapshot);
+    });
+  }
 
   render() {
     return (

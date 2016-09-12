@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "223760557072",
+    "firebase_url": "https://firestack-example.firebaseio.com",
+    "project_id": "firestack-example",
+    "storage_bucket": "firestack-example.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223760557072:android:67c954dec8dedc0e",
+        "android_client_info": {
+          "package_name": "com.firestackapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223760557072-eif2ahnjm20m5gclajmfehc4oge3bbu9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2GmOZW-_KVn5xLnBd6HSJw2tUqlZxqyU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
