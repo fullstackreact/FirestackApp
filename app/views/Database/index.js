@@ -4,12 +4,27 @@ import {
   View,
   Text
 } from 'react-native'
+import {connect} from 'react-redux'
 
 import appStyles from '../../styles/app';
 
 export class Database extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const {firestack} = this.props;
+    const db = firestack.database;
+    this.db = db;
+  }
+
+  // componentDidMount() {
+  //   const ref = this.db.ref('chat-messages').child('roomId');
+  //   ref.orderByKey().limitToLast(3).once('value').then(snapshot => {
+  //     console.log('snapshot ->', snapshot);
+  //   });
+  // }
+
   render() {
-    console.log('rendering database', this.props);
     return (
       <View style={appStyles.scene}>
         <Text>Database examples</Text>
@@ -20,5 +35,7 @@ export class Database extends React.Component {
     )
   }
 }
-
-export default Database
+const mapStateToProps = (state) => ({
+  firestack: state.firestack
+})
+export default connect(mapStateToProps)(Database)
