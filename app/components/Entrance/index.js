@@ -35,7 +35,7 @@ export class Entrance extends Component{
        this.state.transformAnim,    
        {toValue: 50,
         duration: 1200,
-        delay:2000,
+        delay:1600,
         easing: Easing.elastic(2),
       },          
     ).start();
@@ -44,18 +44,22 @@ export class Entrance extends Component{
        {toValue: 0,
         duration: 800,
         easing: Easing.elastic(1),
-        delay:2200,
+        delay:1600,
       },          
      ).start();
     setTimeout(() => {
       this.props.hideThis();
-    }, 3300);              
+    }, 2000);              
   }
 
   render () {
     return(
       <Animated.View style={[styles.entrance,{opacity:this.state.opacityAnim}]}>
-        <AnimatedIcon size={60} style={[styles.twitter,{transform:[{scale:this.state.transformAnim}]}]} name="social-twitter"></AnimatedIcon>
+        <AnimatedIcon size={60} 
+          style={[styles.icon,
+            {transform:[{scale:this.state.transformAnim}]}
+            ]} 
+          name="ios-notifications-outline" />
       </Animated.View>
     )
   }
@@ -64,13 +68,24 @@ export class Entrance extends Component{
 export default Entrance;
 
 const styles = StyleSheet.create({
+  container: {
+    width: sizing.width,
+    height: sizing.height
+  },
   entrance:{
     position: "absolute",
     top:0, left:0,
+    bottom: 0, right: 0,
     height: sizing.height,
     width: sizing.width,
     backgroundColor:"#1b95e0",
     alignItems:"center",
     justifyContent:"center"
-  }
+  },
+  icon:{
+    color:"#fff",
+    position:"relative",
+    top: -20,
+    textAlign: "center"
+  },
 });

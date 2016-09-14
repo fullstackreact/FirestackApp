@@ -9,15 +9,34 @@ import {
 } from 'react-native'
 
 import FirestackNavigator from '../components/Navigation/Navigator'
+import sizing from '../utils/sizing';
+import Entrance from '../components/Entrance'
 
 export class App extends React.Component {
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      showEntrance: true
+    }
+  }
+
+  _hideEntrance() {
+    this.setState({showEntrance: false});
+  }
 
   _navigate({type}) {
     console.log('_navigate called with type', type);
   }
 
   render() {
+    let entrance = this.state.showEntrance ?
+      <Entrance hideThis={() => this._hideEntrance() }/> :
+      <View></View>;
+
     const {firestack, navigationState} = this.props;
+
     return (
       <View style={styles.container}>
         <FirestackNavigator
@@ -25,6 +44,7 @@ export class App extends React.Component {
           firestack={firestack}
           navigationState={navigationState}
           navigate={this._navigate.bind(this)} />
+        {/* entrance */}
       </View>
     )
   }
@@ -32,7 +52,9 @@ export class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    width: sizing.width,
+    height: sizing.height
   }
 })
 

@@ -41,3 +41,5 @@ android/app/libs
 android/keystores/debug.keystore
 ios/GoogleService-Info.plist
 config/development.js
+config/development*.js
+ios/GoogleService-Info*
