@@ -105,7 +105,7 @@ export class Home extends React.Component {
     _pressRow(rowKey) {
       const {actions} = this.props;
       const {navigation} = actions;
-      navigation.push(rowKey);
+      navigation.push(rowKey, this.props);
     }
 
    _renderFooter() {

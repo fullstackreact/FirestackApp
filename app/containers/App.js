@@ -17,11 +17,12 @@ export class App extends React.Component {
   }
 
   render() {
-    const {navigationState} = this.props;
+    const {firestack, navigationState} = this.props;
     return (
       <View style={styles.container}>
         <FirestackNavigator
           {...this.props}
+          firestack={firestack}
           navigationState={navigationState}
           navigate={this._navigate.bind(this)} />
       </View>
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
 
 export default connect(state => {
   return {
-    navigationState: state.navigation
+    navigationState: state.navigation,
+    firestack: state.firestack
   }
 })(App);

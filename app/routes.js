@@ -9,6 +9,7 @@ import appStyles from './styles/app';
 import Home from './views/Home';
 import Database from './views/Database';
 import Authentication from './views/Authentication';
+import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 
 export type Route = {
   key: String,
@@ -28,6 +29,13 @@ export const exampleRoutes = {
       title: 'Authentication',
       Component: Authentication
     }
+  },
+  'messaging': {
+    route: {
+      title: 'Messaging',
+      Component: Messaging
+    },
+    children: MessagingRoutes
   }
 }
 
@@ -43,4 +51,5 @@ export const routes = toList({
   },
 });
 
+console.log('routes ->', routes);
 export default routes;

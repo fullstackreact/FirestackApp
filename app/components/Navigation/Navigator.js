@@ -59,6 +59,7 @@ export class FirestackNavigator extends React.Component {
         <Scene
           {...componentProps}
           key={scene.key}
+          firestack={this.props.firestack}
           navigate={this._navigate.bind(this)}>
             <Component />
         </Scene>

@@ -33,12 +33,13 @@ class Scene extends Component {
   };
 
   render(): ReactElement<any> {
-    const {scene, navigate, children} = this.props;
+    const {scene, navigate, children, firestack} = this.props;
+    const childProps = Object.assign({}, this.props, {firestack})
     return (
       <Animated.View
         style={[styles.scene, this._getAnimatedStyle()]}>
           {Children.map(children, 
-            c => React.cloneElement(c, this.props))}
+            c => React.cloneElement(c, childProps))}
       </Animated.View>
     );
   }

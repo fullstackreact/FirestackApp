@@ -19,7 +19,9 @@ export class Database extends React.Component {
   }
 
   componentDidMount() {
-    const ref = this.db.ref('chat-messages').child('roomId');
+    const roomId = 'roomId';
+    const ref = this.db.ref('chat-messages').child(roomId);
+    ref.keepSynced(true);
     ref.orderByKey().limitToLast(3).once('value').then(snapshot => {
       console.log('snapshot ->', snapshot);
     });
