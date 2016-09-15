@@ -23,12 +23,13 @@ export class Database extends React.Component {
   componentDidMount() {
     const {firestack} = this.props;
 
-    const pRef = firestack.presence
-      // .on('/users/connected')
-      .setOnline('auser')
-      .onConnect(ref => {
-        console.log('connected!', ref)
-      })
+    // const pRef = firestack.presence
+    //   .on('auser')
+    //   .onConnect(ref => {
+    //     console.log('connected!', ref)
+    //   })
+    //   .setOnline()
+      // .setOffline()
 
     const roomId = 'roomId';
     const ref = firestack.database.ref('chat-messages').child(roomId);
@@ -39,6 +40,8 @@ export class Database extends React.Component {
                           return {...val[key], key};
                         });
       this.setState({children})
+    }).then(listeners => {
+      console.log('listeners ->', ref);
     })
     // ref.keepSynced(true);
     // ref.orderByKey().limitToLast(3).on('value', snapshot => {
@@ -52,7 +55,7 @@ export class Database extends React.Component {
 
   componentWillUnmount() {
     const {firestack} = this.props;
-    firestack.presence.setOffline();
+    // firestack.presence.on('auser').setOffline();
     firestack.database.cleanup();
   }
 
