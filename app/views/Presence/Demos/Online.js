@@ -11,6 +11,16 @@ export class Online extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
+    const presence = firestack.presence;
+
+    console.log('presence', presence)
+    presence
+      .on('users/connections')
+      .setOnlineFor('auser')
+      .onConnect(ref => {
+        console.log('connected', ref);
+        ref.onDisconnect().remove();
+      });
   }
 
   _sendHi() {

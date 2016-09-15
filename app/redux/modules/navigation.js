@@ -44,7 +44,6 @@ const reset = (state, payload = {}) => {
 
 export const reducer = createReducer({
   [REHYDRATE]: (state, {payload}) => {
-console.log('REHYDRATE called for navigation', payload);
     const {navigation} = payload;
     const index = navigation ? navigation.index : 0;
     // return NavUtils.reset(state, [routes['welcome']]);

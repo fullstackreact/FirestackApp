@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children as C } from 'react';
 
 import {
   View,
@@ -13,27 +13,55 @@ export class Database extends React.Component {
     super(props);
 
     const {firestack} = this.props;
-    const db = firestack.database;
-    this.db = db;
-    db.setPersistence(true);
+    // firestack.database.setPersistence(false);
+
+    this.state = {
+      children: []
+    }
   }
 
   componentDidMount() {
+    const {firestack} = this.props;
+
+    const pRef = firestack.presence
+      // .on('/users/connected')
+      .setOnline('auser')
+      .onConnect(ref => {
+        console.log('connected!', ref)
+      })
+
     const roomId = 'roomId';
-    const ref = this.db.ref('chat-messages').child(roomId);
-    ref.keepSynced(true);
-    ref.orderByKey().limitToLast(3).once('value').then(snapshot => {
-      console.log('snapshot ->', snapshot);
-    });
+    const ref = firestack.database.ref('chat-messages').child(roomId);
+    ref.on('value', (snapshot) => {
+      const val = snapshot.val();
+      const children = Object.keys(val)
+                        .map(key => {
+                          return {...val[key], key};
+                        });
+      this.setState({children})
+    })
+    // ref.keepSynced(true);
+    // ref.orderByKey().limitToLast(3).on('value', snapshot => {
+    //   const o = Object.keys(snapshot.val());
+    //   ref.child(o[0]).setAt({
+    //     from: 'me',
+    //     msg: 'Hello you guys'
+    //   })
+    // });
+  }
+
+  componentWillUnmount() {
+    const {firestack} = this.props;
+    firestack.presence.setOffline();
+    firestack.database.cleanup();
   }
 
   render() {
     return (
       <View style={appStyles.scene}>
-        <Text>Database examples</Text>
-        <Text>Database examples</Text>
-        <Text>Database examples</Text>
-        <Text>Database examples</Text>
+        {this.state.children.map(c => {
+          return <Text key={c.key}>{c.msg}</Text>
+        })}
       </View>
     )
   }
