@@ -10,6 +10,7 @@ import Home from './views/Home';
 import Database from './views/Database';
 import Authentication from './views/Authentication';
 import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
+import Presence, { Routes as PresenceRoutes } from './views/Presence'
 
 export type Route = {
   key: String,
@@ -29,6 +30,13 @@ export const exampleRoutes = {
       title: 'Authentication',
       Component: Authentication
     }
+  },
+  'presence': {
+    route: {
+      title: 'Presence',
+      Component: Presence
+    },
+    children: PresenceRoutes
   },
   'messaging': {
     route: {
@@ -51,5 +59,4 @@ export const routes = toList({
   },
 });
 
-console.log('routes ->', routes);
 export default routes;

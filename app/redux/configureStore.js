@@ -1,43 +1,66 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
-import { bindActionCreators } from 'redux'
-import thunk from 'redux-thunk'
+import { bindActionCreatorsToStore } from 'redux-module-builder';
+import { bindActionCreators, compose } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import {persistStore, autoRehydrate} from 'redux-persist'
+import {AsyncStorage} from 'react-native'
 
 import Firestack from 'react-native-firestack'
 import env from '../../config/environment'
 
-import * as currentUser from './modules/currentUser'
-import * as navigation from './modules/navigation'
+import { rootReducer, actions, initialState } from './rootReducer';
 
 export const configureStore = (userInitialState = {}) => {
-  const middleware = applyMiddleware(thunk);
+  let middleware = [
+    thunkMiddleware,
+  ]
+
+  let tools = [];
+  if (process.env.NODE_ENV === 'development') {
+    // const devTools = require('remote-redux-devtools');
+    // tools.push(devTools());
+  }
+
+  tools.push(autoRehydrate())
 
   const firestack = new Firestack(env.firestack)
 
-  const rootReducer = combineReducers({
-    user: currentUser.reducer,
-    navigation: navigation.reducer,
-    firestack: (state) => firestack
-  });
+  let finalCreateStore;
+  finalCreateStore = compose(
+    applyMiddleware(...middleware),
+    ...tools
+  )(createStore);
 
-  let initialState = 
-    Object.assign({}, {
-      navigation: navigation.initialState
-    })
-
-  const store = createStore(
-    rootReducer,
+  const finalInitialState = Object.assign({},
     initialState,
-    middleware);
+    userInitialState,
+    {firestack}
+  );
+
+  const store = finalCreateStore(
+    rootReducer,
+    finalInitialState
+  );
+  
+  const persistor = persistStore(store, {
+    storage: AsyncStorage, 
+    blacklist: ['firestack']
+  });
 
   firestack.setStore(store);
 
-  const dispatch = store.dispatch;
-  const actions = {
-    currentUser: bindActionCreators(currentUser.actions, dispatch),
-    navigation: bindActionCreators(navigation.actions, dispatch),
+  if (module.hot) {
+    module.hot.accept('./rootReducer', () => {
+      const {rootReducer} = require('./rootReducer').default;
+      store.replaceReducer(rootReducer);
+    });
   }
 
-  return {store,actions}
+  const boundActions = bindActionCreatorsToStore(actions, store);
+  return {
+    store,
+    actions: boundActions
+  }
 }
 
 export default configureStore

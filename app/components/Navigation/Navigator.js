@@ -98,7 +98,7 @@ export class FirestackNavigator extends React.Component {
         route = Object.assign({}, routes.default, {title, actions});
       }
 
-      route.actions = actions
+      // route.actions = actions
       const {headerStyle} = route;
       let headerProps = Object.assign({}, sceneProps, {
         route,
