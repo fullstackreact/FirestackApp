@@ -11,8 +11,6 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
-#import "Firestack.h"
-#import "FirestackCloudMessaging.h"
 
 @implementation AppDelegate
 
@@ -38,7 +36,7 @@
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
-  [FirestackCloudMessaging did]
+//  [FirestackCloudMessaging did]
 }
 
 @end

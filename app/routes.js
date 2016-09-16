@@ -11,6 +11,7 @@ import Database from './views/Database';
 import Authentication from './views/Authentication';
 import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 import Presence, { Routes as PresenceRoutes } from './views/Presence'
+import Analytics, { Routes as AnalyticsRoutes } from './views/Analytics';
 
 export type Route = {
   key: String,
@@ -19,6 +20,13 @@ export type Route = {
 };
 
 export const exampleRoutes = {
+  'analytics': {
+    route: {
+      title: 'Analytics',
+      Component: Analytics
+    },
+    children: AnalyticsRoutes
+  },
   'database': {
     route: {
       title: 'Database',
