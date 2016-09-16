@@ -3,6 +3,7 @@ import React from 'react'
 import {
   View,
   Text,
+  TouchableHighlight
 } from 'react-native'
 
 import appStyles from '../../../styles/app';
@@ -22,24 +23,35 @@ export class Setup extends React.Component {
        console.error(err);
     });
 
-    firestack.cloudMessaging.listenForReceiveNotification((msg) =>{
-      console.log('Receive Messages:'+msg.data);
-      console.log('Receive Messages:'+msg.notification);
-    });
+    firestack.cloudMessaging.onRemoteMessage(notification => {
+      console.log('Received remote notification', notification);
+    })
+
+    firestack.cloudMessaging.onLocalMessage(notification => {
+      console.log('Received local notification', notification);
+    })
+
+    // firestack.cloudMessaging.listenForReceiveNotification((msg) =>{
+    //   console.log('Receive Messages:'+msg.data);
+    //   console.log('Receive Messages:'+msg.notification);
+    // });
   }
 
   _sendHi() {
     const {firestack} = this.props;
-    firestack.cloudMessaging.send("hi", "bee", 2, "Alerting")
+    firestack.cloudMessaging.sendMessage({
+      alertBody: "Some message",
+      alertAction: "view"
+    })
   }
 
   render() {
     return (
       <View>
         <Text>Hi</Text>
-        <View style={appStyles.row}>
-          <Text onPress={this._sendHi.bind(this)}>Hi</Text>
-        </View>
+        <TouchableHighlight onPress={this._sendHi.bind(this)} style={appStyles.row}>
+          <Text>Hi</Text>
+        </TouchableHighlight>
       </View>
     )
   }

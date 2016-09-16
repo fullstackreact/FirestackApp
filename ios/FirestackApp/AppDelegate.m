@@ -11,6 +11,8 @@
 
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
+#import "Firestack.h"
+#import "FirestackCloudMessaging.h"
 
 @implementation AppDelegate
 
@@ -32,6 +34,11 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+  [FirestackCloudMessaging did]
 }
 
 @end
