@@ -16,7 +16,7 @@ export class Online extends React.Component {
     console.log('presence', presence)
     presence
       .on('users/connections')
-      .setOnlineFor('auser')
+      .setOnline('auser')
       .onConnect(ref => {
         console.log('connected', ref);
         ref.onDisconnect().remove();

@@ -15,7 +15,7 @@ import LogEvent from './Demos/LogEvent';
 export const Routes = {
   'logevent': {
     route: {
-      title: 'Log event',
+      title: 'Simple log event example',
       Component: LogEvent
     }
   }
