@@ -6,69 +6,54 @@ import {
 } from 'react-native'
 import {connect} from 'react-redux'
 
+import List from '../../components/List/List'
 import appStyles from '../../styles/app';
 
-export class Database extends React.Component {
-  constructor(props) {
-    super(props);
+import Chat from './Demos/Chat';
 
-    const {firestack} = this.props;
-    // firestack.database.setPersistence(false);
-
-    this.state = {
-      children: []
+export const Routes = {
+  'Chat example': {
+    route: {
+      title: 'Chat example',
+      Component: Chat
     }
   }
+}
 
-  componentDidMount() {
-    const {firestack} = this.props;
-
-    // const pRef = firestack.presence
-    //   .on('auser')
-    //   .onConnect(ref => {
-    //     console.log('connected!', ref)
-    //   })
-    //   .setOnline()
-      // .setOffline()
-
-    const roomId = 'roomId';
-    const ref = firestack.database.ref('chat-messages').child(roomId);
-    ref.on('value', (snapshot) => {
-      const val = snapshot.val();
-      const children = Object.keys(val)
-                        .map(key => {
-                          return {...val[key], key};
-                        });
-      this.setState({children})
-    }).then(listeners => {
-      console.log('listeners ->', ref);
-    })
-    // ref.keepSynced(true);
-    // ref.orderByKey().limitToLast(3).on('value', snapshot => {
-    //   const o = Object.keys(snapshot.val());
-    //   ref.child(o[0]).setAt({
-    //     from: 'me',
-    //     msg: 'Hello you guys'
-    //   })
-    // });
-  }
-
-  componentWillUnmount() {
-    const {firestack} = this.props;
-    // firestack.presence.on('auser').setOffline();
-    firestack.database.cleanup();
-  }
-
+export class Database extends React.Component {
   render() {
+    const initialRows = Object.keys(Routes).map(key => {
+      const routeCfg = Routes[key];
+      return { title: routeCfg.route.title, key: `database.${key}` }
+    })
     return (
-      <View style={appStyles.scene}>
-        {this.state.children.map(c => {
-          return <Text key={c.key}>{c.msg}</Text>
-        })}
+      <View style={appStyles.container}>
+        <List 
+          initialRows={initialRows}
+          renderRow={this._renderRow.bind(this)}
+          onRowPress={this._onRowPress.bind(this)}
+          />
       </View>
     )
   }
+
+  _renderRow(rowData, sectionID, rowID, highlightRow) {
+    console.log(rowData)
+    return (
+      <View style={[appStyles.row]}>
+        <Text>{rowData.title}</Text>
+      </View>
+    )
+  }
+
+  _onRowPress(rowData) {
+    const rowKey = rowData.key;
+    const {actions} = this.props;
+    const {navigation} = actions;
+    navigation.push(rowKey, this.props);
+  }
 }
+
 const mapStateToProps = (state) => ({
   firestack: state.firestack
 })

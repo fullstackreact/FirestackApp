@@ -7,7 +7,7 @@ import toList from './utils/toList'
 import appStyles from './styles/app';
 
 import Home from './views/Home';
-import Database from './views/Database';
+import Database, { Routes as DatabaseRoutes } from './views/Database';
 import Authentication from './views/Authentication';
 import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 import Presence, { Routes as PresenceRoutes } from './views/Presence'
@@ -31,7 +31,8 @@ export const exampleRoutes = {
     route: {
       title: 'Database',
       Component: Database
-    }
+    },
+    children: DatabaseRoutes
   },
   'auth': {
     route: {
