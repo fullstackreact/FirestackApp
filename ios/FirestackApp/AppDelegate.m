@@ -34,10 +34,4 @@
   return YES;
 }
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-//  [Firestack setup:application];
-//  [FirestackCloudMessaging did]
-}
-
 @end
