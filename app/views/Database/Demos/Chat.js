@@ -37,7 +37,6 @@ export class Chat extends React.Component {
     //       messages: GiftedChat.append(previousMessages, messages)
     //     }, () => {
           .on('child_added', (snapshot) => {
-console.log('child_added called -->', this);
             this.setState({
               messages: GiftedChat.append(this.state.messages, snapshot.val())
             })
