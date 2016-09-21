@@ -30,19 +30,11 @@ export class Chat extends React.Component {
     ref
     .orderByChild('createdAt')
     .limitToLast(10)
-    // .once('value', (snapshot) => {
-    //     const previousMessages = this.state.messages;
-    //     const messages = this.messagesFromSnapshot(snapshot);
-    //     this.setState({
-    //       messages: GiftedChat.append(previousMessages, messages)
-    //     }, () => {
           .on('child_added', (snapshot) => {
             this.setState({
               messages: GiftedChat.append(this.state.messages, snapshot.val())
             })
           })
-        // })
-      // });
   }
 
   componentWillUnmount() {
