@@ -96,7 +96,7 @@ export class Home extends React.Component {
           this._pressRow(rowData.key);
         }}>
          <View style={appStyles.row}>
-          <Text>{rowData.title}</Text>
+          <Text style={[appStyles.rowText]}>{rowData.title}</Text>
          </View>
       </TouchableHighlight>
      )

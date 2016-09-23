@@ -137,7 +137,7 @@ export class FirestackNavigator extends React.Component {
 
   _configureTransition() {
     const easing = Easing.inOut(Easing.ease);
-    return {easing, duration: 200}
+    return {easing, duration: 250}
   }
 
   _back() {

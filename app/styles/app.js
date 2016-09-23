@@ -26,8 +26,11 @@ export const appStyles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'center',
-    padding: 10,
+    padding: 20,
     backgroundColor: '#F6F6F6',
+  },
+  rowText: {
+    fontSize: 18
   }
 });
 

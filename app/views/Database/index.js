@@ -41,7 +41,7 @@ export class Database extends React.Component {
     console.log(rowData)
     return (
       <View style={[appStyles.row]}>
-        <Text>{rowData.title}</Text>
+        <Text style={[appStyles.rowText]}>{rowData.title}</Text>
       </View>
     )
   }
