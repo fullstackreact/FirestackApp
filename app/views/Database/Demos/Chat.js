@@ -9,6 +9,14 @@ import {
 import appStyles from '../../../styles/app';
 import { GiftedChat } from 'react-native-gifted-chat';
 
+const unique = xs => {
+  let visited = {};
+  return xs.filter(x => {
+    if (visited[x]) return;
+    visited[x] = true;
+    return x;
+  });
+}
 
 const firebaseRefName = 'chat-messages/database-demo';
 export class Chat extends React.Component {
@@ -25,15 +33,22 @@ export class Chat extends React.Component {
   componentWillMount() {
     const {firestack} = this.props;
     const ref = firestack.database.ref(firebaseRefName)
-                  
     
     ref
     .orderByChild('createdAt')
     .limitToLast(10)
           .on('child_added', (snapshot) => {
-            this.setState({
-              messages: GiftedChat.append(this.state.messages, snapshot.val())
-            })
+            const msg = {
+              ...snapshot.val()
+            }
+            const {messages} = this.state;
+            const msgIds = messages.map(m => m._id);
+
+            if (msgIds.indexOf(msg._id) < 0) {
+              this.setState({
+                messages: GiftedChat.append(this.state.messages, msg)
+              });
+            }
           })
   }
 
