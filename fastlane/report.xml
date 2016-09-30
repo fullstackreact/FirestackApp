@@ -3,62 +3,62 @@
   <testsuite name="fastlane.lanes">
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.000678">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.00076">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000454">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000422">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: Switch to ios prepare lane" time="0.000248">
+      <testcase classname="fastlane.lanes" name="2: Switch to ios prepare lane" time="0.000292">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="1.962916">
+      <testcase classname="fastlane.lanes" name="3: increment_version_number" time="1.854661">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="1.979725">
+      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="1.567389">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: cert" time="30.886335">
+      <testcase classname="fastlane.lanes" name="5: cert" time="20.593791">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: sigh" time="24.311218">
+      <testcase classname="fastlane.lanes" name="6: sigh" time="27.661635">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="7: sigh" time="25.592607">
+      <testcase classname="fastlane.lanes" name="7: sigh" time="3.303846">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="8: sigh" time="42.307381">
+      <testcase classname="fastlane.lanes" name="8: sigh" time="2.992388">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="9: Switch to ios build_and_archive lane" time="0.000381">
+      <testcase classname="fastlane.lanes" name="9: Switch to ios build_and_archive lane" time="0.000816">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="10: gym" time="76.54367">
+      <testcase classname="fastlane.lanes" name="10: gym" time="112.904187">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="11: deliver" time="35.889347">
+      <testcase classname="fastlane.lanes" name="11: deliver" time="37.570452">
         
       </testcase>
     
