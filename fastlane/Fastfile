@@ -1,0 +1,165 @@
+$:.unshift File.dirname(__FILE__)
+require 'lib/utils.rb'
+
+fastlane_version "1.104.0"
+
+root_dir = File.expand_path(ENV['PWD'])
+iOS_dir_relative = File.join('ios')
+iOS_dir = File.expand_path(File.join(root_dir, iOS_dir_relative))
+infoPLIST = File.join(iOS_dir, 'FirestackApp', 'Info.plist');
+
+name = get_app_name(infoPLIST) || 'FirestackApp'
+defaultId = 'io.fullstack.FirestackExample'
+main_xcodeproj = File.join(iOS_dir_relative, "#{name}.xcodeproj")
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    
+    
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    # match(type: "appstore") # more information: https://codesigning.guide
+    # gym(scheme: "FirestackApp") # Build your app - more options available
+    payload = prepare(
+      branch: 'master', 
+      id: 'io.fullstack.FirestackExample')
+    build_and_archive(
+      scheme: 'FirestackApp', 
+      configuration: 'Debug',
+      env: 'Debug')
+    pilot
+
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    # match(type: "appstore")
+    # snapshot
+    payload = prepare(
+      branch: 'master', 
+      id: 'io.fullstack.FirestackExample')
+    build_and_archive(
+      scheme: 'FirestackApp', 
+      configuration: 'Release',
+      env: 'release')
+    # gym(
+    #   scheme: "FirestackApp",
+    #   project: "ios/FirestackApp.xcodeproj")
+    deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+
+  lane :prepare do |options|
+    options = OpenStruct.new(options)
+
+
+    branch = options.branch || 'master'
+
+    # ensure_git_branch(branch: branch)
+    # Make sure we start off with a clean slate
+    # ensure_git_status_clean
+
+    # Increment build number to current date
+    # build_number = Time.new.strftime("%Y.%m.%d")
+    # increment_build_number build_number: build_number
+
+    plist_version = get_version_short_string infoPLIST
+    version_number = plist_version
+
+    if options.update_version_type
+      version_number = increment_version_number(bump_type: options.update_version_type, xcodeproj: main_xcodeproj)
+      build_number = increment_build_number build_number: 0, xcodeproj: main_xcodeproj
+    else
+      version_number = increment_version_number(version_number: version_number, xcodeproj: main_xcodeproj)
+      build_number = increment_build_number xcodeproj: main_xcodeproj
+    end
+
+    # Generate release notes from CHANGELOG
+    # readme = generate_git_commit_log(version_number)
+
+    # open(changelog, 'w+') { |f| f << readme }
+
+    ENV['APP_IDENTIFIER'] = options.id || defaultId
+    ENV['APP_NAME'] = options.name || name
+    ENV['APP_VERSION_NUMBER'] = version_number
+    ENV['CERT_OUTPUT_PATH'] = '/tmp'
+    ENV['PRODUCT_NAME'] = ENV['APP_NAME']
+
+    cert
+
+    udid = sigh(app_identifier: ENV['APP_IDENTIFIER'], output_path: "/tmp")
+    ENV["WATCHKIT_EXTENSIONS_UDID"] = udid
+
+    udid = sigh(app_identifier: ENV['APP_IDENTIFIER'], output_path: "/tmp")
+    ENV["WATCHKIT_APP_UDID"] = udid
+
+    udid = sigh(app_identifier: ENV['APP_IDENTIFIER'], output_path: "/tmp")
+    ENV["PROJECT_UDID"] = udid
+
+    {version_number: version_number, build_number: build_number}
+  end
+
+
+  private_lane :build_and_archive do |options|
+    options = OpenStruct.new(options)
+
+    env  = options.env
+    name = options.name || name
+    configuration = options.configuration || env
+    scheme = options.scheme || "#{name}-#{configuration}"
+
+    config = {
+      clean: true,
+      scheme: scheme,
+      configuration: configuration,
+      output_name: scheme,
+      project: File.join(iOS_dir_relative, "#{name}.xcodeproj"),
+      # provisioning_profile_path: ENV["PROJECT_PROVISIONING_PATH"],
+      output_directory: './Releases',
+      # use_legacy_build_api: true,
+      use_legacy_build_api: false,
+      # export_method: '',
+      # toolchain: "com.apple.dt.toolchain.Swift_2_3"
+    }
+
+    ad_hoc = false
+    gym(config)
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+
+# fastlane reports which actions are used
+# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer

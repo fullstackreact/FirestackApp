@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.facebook.react.ReactApplication;
 import io.fullstack.firestack.FirestackPackage;
+import io.fullstack.firestack.FirestackPackage;
+import io.fullstack.firestack.FirestackPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
@@ -26,6 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FirestackPackage(getApplicationContext()),
+            new FirestackPackage(getApplicationContext()),
             new FirestackPackage(getApplicationContext()),
             new VectorIconsPackage()
       );
