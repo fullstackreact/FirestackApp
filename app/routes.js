@@ -8,7 +8,7 @@ import appStyles from './styles/app';
 
 import Home from './views/Home';
 import Database, { Routes as DatabaseRoutes } from './views/Database';
-import Authentication from './views/Authentication';
+import Authentication, { Routes as AuthRoutes } from './views/Authentication';
 import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 import Presence, { Routes as PresenceRoutes } from './views/Presence'
 import Analytics, { Routes as AnalyticsRoutes } from './views/Analytics';
@@ -38,7 +38,8 @@ export const exampleRoutes = {
     route: {
       title: 'Authentication',
       Component: Authentication
-    }
+    },
+    children: AuthRoutes
   },
   'presence': {
     route: {

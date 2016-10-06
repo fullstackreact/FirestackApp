@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -24,7 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		34BCB423599F782BE1E3F598 /* libPods-FirestackApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67A03668B63387373EED70A /* libPods-FirestackApp.a */; };
+		2A73E234763E52341EA00BEC /* Pods_FirestackApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E4ED0F72AFACC423221492 /* Pods_FirestackApp.framework */; };
 		4F2EB34B0265421E9DC9F64D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03F453DB070844839A1D0615 /* FontAwesome.ttf */; };
 		5A23F9EA4D9B4B3E9DC07A5D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B14D251F8788439EBDFC19D6 /* Entypo.ttf */; };
 		77979D8511B14C88B2EF35BB /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0F6BD6002274B96B0321DBF /* EvilIcons.ttf */; };
@@ -35,6 +34,8 @@
 		B914148F5A434E5A9680EC2C /* libFirestack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D158E31DA3274CAF885DA5E5 /* libFirestack.a */; };
 		D99ACF771D8E206300D391A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D99ACF761D8E206300D391A9 /* GoogleService-Info.plist */; };
 		F4431358485C40019FF20AE7 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 947FF5EAE6D9457D8D9A4EA2 /* Foundation.ttf */; };
+		E7D400729B344B6CB651B6E4 /* libOAuthManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93AD42C202C542DDB981C4C4 /* libOAuthManager.a */; };
+		AAE721A98E364AC2A301BE95 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05447A12A2704B4DBC663EC9 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FirestackApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FirestackApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		22E4ED0F72AFACC423221492 /* Pods_FirestackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirestackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3988AE0934704FD0ADAC9CE5 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		43A9680A7D7B4D12ADED1B46 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		5D4DBCF5A4BA4854BBD023F0 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -162,13 +164,15 @@
 		83DD9D687A23CFF859FC5C80 /* Pods-FirestackApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestackApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirestackApp/Pods-FirestackApp.debug.xcconfig"; sourceTree = "<group>"; };
 		92260FFCC5A41B4324C2DE1D /* Pods-FirestackApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestackApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirestackApp/Pods-FirestackApp.release.xcconfig"; sourceTree = "<group>"; };
 		947FF5EAE6D9457D8D9A4EA2 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		A67A03668B63387373EED70A /* libPods-FirestackApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirestackApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14D251F8788439EBDFC19D6 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		CB14CE3DFE5744D4A678C73E /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		D158E31DA3274CAF885DA5E5 /* libFirestack.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = archive.ar; path = libFirestack.a; sourceTree = "<group>"; };
 		D99ACF761D8E206300D391A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB12A55C1C7B48E6B67B7F38 /* Firestack.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = Firestack.xcodeproj; path = "../node_modules/react-native-firestack/ios/Firestack.xcodeproj"; sourceTree = "<group>"; };
 		F0F6BD6002274B96B0321DBF /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		0E57E8F64CE446DB979ECBFC /* OAuthManager.xcodeproj */ = {isa = PBXFileReference; name = "OAuthManager.xcodeproj"; path = "../node_modules/react-native-oauth/ios/OAuthManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		93AD42C202C542DDB981C4C4 /* libOAuthManager.a */ = {isa = PBXFileReference; name = "libOAuthManager.a"; path = "libOAuthManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		05447A12A2704B4DBC663EC9 /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +199,10 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				0F87A14A55B94CA79AA8234E /* libRNVectorIcons.a in Frameworks */,
-				34BCB423599F782BE1E3F598 /* libPods-FirestackApp.a in Frameworks */,
 				B914148F5A434E5A9680EC2C /* libFirestack.a in Frameworks */,
+				2A73E234763E52341EA00BEC /* Pods_FirestackApp.framework in Frameworks */,
+				E7D400729B344B6CB651B6E4 /* libOAuthManager.a in Frameworks */,
+				AAE721A98E364AC2A301BE95 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +327,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				5D4DBCF5A4BA4854BBD023F0 /* RNVectorIcons.xcodeproj */,
 				DB12A55C1C7B48E6B67B7F38 /* Firestack.xcodeproj */,
+				0E57E8F64CE446DB979ECBFC /* OAuthManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -385,7 +392,8 @@
 		C5F76D1C98048D4704EBBA19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A67A03668B63387373EED70A /* libPods-FirestackApp.a */,
+				22E4ED0F72AFACC423221492 /* Pods_FirestackApp.framework */,
+				05447A12A2704B4DBC663EC9 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -795,7 +803,7 @@
 			baseConfigurationReference = 83DD9D687A23CFF859FC5C80 /* Pods-FirestackApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -809,6 +817,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack/**",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack",
+					"$(SRCROOT)/../node_modules/react-native-oauth/ios/**",
 				);
 				INFOPLIST_FILE = FirestackApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -830,7 +839,7 @@
 			baseConfigurationReference = 92260FFCC5A41B4324C2DE1D /* Pods-FirestackApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -843,6 +852,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack/**",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack",
+					"$(SRCROOT)/../node_modules/react-native-oauth/ios/**",
 				);
 				INFOPLIST_FILE = FirestackApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -900,6 +910,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack/**",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack",
+					"$(SRCROOT)/../node_modules/react-native-oauth/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -943,6 +954,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack/**",
 					"$(SRCROOT)/../node_modules/react-native-firestack/ios/Firestack",
+					"$(SRCROOT)/../node_modules/react-native-oauth/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

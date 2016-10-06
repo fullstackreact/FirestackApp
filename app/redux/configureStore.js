@@ -47,6 +47,8 @@ export const configureStore = (userInitialState = {}) => {
     blacklist: ['firestack']
   });
 
+  // persistor.purge();
+
   firestack.setStore(store);
 
   if (module.hot) {
