@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "242347836210DA0FD81821B3FF38531CD63A6B4C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "185F96754A06BC8FF2134DF1E4AA46B641DBED2D" : 0,
+    "242347836210DA0FD81821B3FF38531CD63A6B4C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "64B9E901-CA6F-4A7C-9DB7-CD4AA859D2A4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "185F96754A06BC8FF2134DF1E4AA46B641DBED2D" : "OAuthManager\/",
+    "242347836210DA0FD81821B3FF38531CD63A6B4C" : "FirestackApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FirestackApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/FirestackApp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:fullstackreact\/react-native-oauth.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "185F96754A06BC8FF2134DF1E4AA46B641DBED2D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:fullstackio\/FirestackApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "242347836210DA0FD81821B3FF38531CD63A6B4C"
+    }
+  ]
+}
