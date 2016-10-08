@@ -24,7 +24,17 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>io.fullstack.FirestackExample</string>
+			<string>facebook</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1745641015707619</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>custom</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>firestackexample</string>
@@ -33,6 +43,12 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>76</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+		<string>fb1745641015707619</string>
+		<string>fbauth</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

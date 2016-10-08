@@ -31,9 +31,7 @@
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   
-  [OAuthManager setupOAuthHandler:application
-                      andDelegate:self
-                             view:rootView];
+  [OAuthManager setupOAuthHandler:application];
   
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];

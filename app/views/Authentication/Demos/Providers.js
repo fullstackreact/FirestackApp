@@ -26,7 +26,7 @@ export class Providers extends React.Component {
     return (evt) => {
       console.log('loginWith', provider);
       this.manager
-        .authorize(provider, {})
+        .authorize(provider, {scopes: 'profile email'})
         .then(resp => {
           console.log('response ->', resp);
         })
