@@ -24,7 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>facebook</string>
+			<string>Facebook</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1745641015707619</string>
@@ -34,10 +34,20 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>custom</string>
+			<string>Twitter</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>firestackexample</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.223760557072-iu0fv6fau7dorfbrm74sep00j5c39ov2</string>
 			</array>
 		</dict>
 	</array>
@@ -45,6 +55,8 @@
 	<string>76</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>223760557072-t6ine4mmot5ejmfg96k3huoqg9jsppnl.apps.googleusercontent.com</string>
+		<string>googlechrome-x-callback</string>
 		<string>fbauth2</string>
 		<string>fb1745641015707619</string>
 		<string>fbauth</string>

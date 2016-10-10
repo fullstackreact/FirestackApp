@@ -12,6 +12,13 @@ import appStyles from '../../../styles/app';
 import OAuthManager from 'react-native-oauth';
 
 const supportedProviders = OAuthManager.providers();
+
+const opts = {
+  google: {scopes: 'email'},
+  facebook: {},
+  twitter: {}
+}
+
 export class Providers extends React.Component {
 
   componentWillMount() {
@@ -26,7 +33,7 @@ export class Providers extends React.Component {
     return (evt) => {
       console.log('loginWith', provider);
       this.manager
-        .authorize(provider, {scopes: 'profile email'})
+        .authorize(provider, opts[provider])
         .then(resp => {
           console.log('response ->', resp);
         })
