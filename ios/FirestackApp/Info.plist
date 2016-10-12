@@ -47,7 +47,7 @@
 			<string>Google</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.223760557072-iu0fv6fau7dorfbrm74sep00j5c39ov2</string>
+				<string>com.googleusercontent.apps.223760557072-t8hd07q4lm552na0s1id3cjj39927ptv</string>
 			</array>
 		</dict>
 	</array>
@@ -55,7 +55,7 @@
 	<string>76</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>223760557072-t6ine4mmot5ejmfg96k3huoqg9jsppnl.apps.googleusercontent.com</string>
+		<string>com.googleusercontent.apps.223760557072-t8hd07q4lm552na0s1id3cjj39927ptv</string>
 		<string>googlechrome-x-callback</string>
 		<string>fbauth2</string>
 		<string>fb1745641015707619</string>

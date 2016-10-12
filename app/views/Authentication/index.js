@@ -10,12 +10,19 @@ import appStyles from '../../styles/app';
 import List from '../../components/List/List'
 
 import Providers from './Demos/Providers';
+import Anonymous from './Demos/Anonymous';
 
 export const Routes = {
   'providers': {
     route: {
       title: 'Providers',
       Component: Providers
+    }
+  },
+  'anonymous': {
+    route: {
+      title: 'Anonymous login',
+      Component: Anonymous
     }
   }
 }
@@ -24,7 +31,6 @@ export class Authentication extends React.Component {
   render() {
     const initialRows = Object.keys(Routes).map(key => {
       const routeCfg = Routes[key];
-console.log('key ->', key);
       return { title: routeCfg.route.title, key: `auth.${key}` }
     })
     return (
