@@ -18,9 +18,12 @@ export class Anonymous extends React.Component {
 
   loginAnonymously(evt) {
     const {firestack} = this.props;
-    firestack.signInAnonymously()
+    firestack.auth.signInAnonymously()
       .then(u => {
         console.log('Signed in!', u);
+      })
+      .catch(err => {
+        console.log('An error occurred', err);
       })
   }
 
