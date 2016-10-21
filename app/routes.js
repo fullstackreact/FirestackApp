@@ -12,6 +12,7 @@ import Authentication, { Routes as AuthRoutes } from './views/Authentication';
 import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 import Presence, { Routes as PresenceRoutes } from './views/Presence'
 import Analytics, { Routes as AnalyticsRoutes } from './views/Analytics';
+import Storage, { Routes as StorageRoutes } from './views/Storage';
 
 export type Route = {
   key: String,
@@ -54,6 +55,13 @@ export const exampleRoutes = {
       Component: Messaging
     },
     children: MessagingRoutes
+  },
+  'storage': {
+    route: {
+      title: 'Storage',
+      Component: Storage
+    },
+    children: StorageRoutes
   }
 }
 

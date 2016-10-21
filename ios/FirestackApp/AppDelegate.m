@@ -39,7 +39,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  NSLog(@"application openURL called: %@", url);
   return [OAuthManager handleOpenUrl:application
                              openURL:url
                    sourceApplication:sourceApplication

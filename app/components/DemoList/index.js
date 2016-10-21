@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes as T } from 'react';
 import {connect} from 'react-redux'
 
 import {
@@ -9,36 +9,18 @@ import {
 import appStyles from '../../styles/app';
 import List from '../../components/List/List'
 
-import Email from './Demos/Email';
-import Providers from './Demos/Providers';
-import Anonymous from './Demos/Anonymous';
-
-export const Routes = {
-  'email': {
-    route: {
-      title: 'Email',
-      Component: Email
-    }
-  },
-  'providers': {
-    route: {
-      title: 'Providers',
-      Component: Providers
-    }
-  },
-  'anonymous': {
-    route: {
-      title: 'Anonymous login',
-      Component: Anonymous
-    }
+export class DemoList extends React.Component {
+  static propTypes = {
+    routes: T.object.isRequired,
+    routeKey: T.string.isRequired
   }
-}
 
-export class Authentication extends React.Component {
   render() {
-    const initialRows = Object.keys(Routes).map(key => {
-      const routeCfg = Routes[key];
-      return { title: routeCfg.route.title, key: `auth.${key}` }
+    const { routes, routeKey } = this.props;
+
+    const initialRows = Object.keys(routes).map(key => {
+      const routeCfg = routes[key];
+      return { title: routeCfg.route.title, key: `${routeKey}.${key}` }
     })
     return (
       <View style={appStyles.container}>
@@ -71,4 +53,4 @@ export class Authentication extends React.Component {
 const mapStateToProps = (state) => ({
   firestack: state.firestack
 })
-export default connect(mapStateToProps)(Authentication)
+export default connect(mapStateToProps)(DemoList)
