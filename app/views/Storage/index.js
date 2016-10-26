@@ -12,6 +12,7 @@ import DemoList from '../../components/DemoList';
 
 // Demos
 import Upload from './Demos/Upload';
+import Download from './Demos/Download';
 
 export const Routes = {
   'upload': {
@@ -19,13 +20,21 @@ export const Routes = {
       title: 'Upload',
       Component: Upload
     }
+  },
+  'downloads': {
+    route: {
+      title: 'Downloads',
+      Component: Download
+    }
   }
 }
 
 export class Storage extends React.Component {
   render() {
     return (
-      <DemoList routes={Routes} routeKey='storage' />
+      <DemoList {...this.props} 
+      routes={Routes} 
+      routeKey='storage' />
     );
   }
 }

@@ -19,6 +19,10 @@ export const appStyles = StyleSheet.create({
     right: 0,
     top: 0,
   },
+  description: {
+    paddingHorizontal: 20,
+    paddingVertical: 5
+  },
   center: {
     justifyContent: 'center',
     alignItems: 'center',
