@@ -7,28 +7,11 @@ import {
 } from 'react-native'
 
 import { 
-  Container, Header, Title, Content, Button,
-  Card, CardItem, Spinner
+  Container, Header, Title, Content, Button, Spinner
 } from 'native-base';
 import appStyles from '../../../styles/app';
+import { UploadedImage } from '../components/UploadedImage';
 const cat = require('image!cat');
-
-const UploadedImage = ({image}) => {
-  console.log('uploadedImage ->', image);
-  return (
-    <Card>
-      <CardItem>
-          <Text>Uploaded file</Text>
-      </CardItem>
-
-      <CardItem>                        
-          <Image 
-            style={{ resizeMode: 'cover' }} 
-            source={image} /> 
-      </CardItem>
-    </Card>
-  )
-}
 
 export class UploadDemo extends React.Component {
 
@@ -86,13 +69,6 @@ export class UploadDemo extends React.Component {
     const { uploading, fileUploaded } = this.state;
     return (
       <Container>
-        <View style={[appStyles.description, appStyles.center]}>
-          <Text>
-            This demo uploads a local resource to the firestack storage
-            and then uses `downloadUrl()` to download and display the image
-          </Text>
-        </View>
-
         <Content>
           <Button
             block
