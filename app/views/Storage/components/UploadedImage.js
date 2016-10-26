@@ -2,12 +2,11 @@ import React from 'react';
 import { Text, Image } from 'react-native';
 import { Card, CardItem } from 'native-base';
 
-export const UploadedImage = ({image}) => {
-  console.log('hi', image);
+export const UploadedImage = ({image, title = 'File'}) => {
   return (
     <Card>
       <CardItem>
-          <Text>Uploaded file</Text>
+          <Text>{title}</Text>
       </CardItem>
 
       <CardItem>                        
