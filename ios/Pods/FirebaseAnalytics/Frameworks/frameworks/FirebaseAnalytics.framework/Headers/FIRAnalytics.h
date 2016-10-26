@@ -68,4 +68,28 @@
 ///     non-empty and no more than 36 characters long. Setting userID to nil removes the user ID.
 + (void)setUserID:(nullable NSString *)userID;
 
+/// Sets the current screen name, which specifies the current visual context in your app. This helps
+/// identify the areas in your app where users spend their time and how they interact with your app.
+///
+/// Note that screen reporting is enabled automatically and records the class name of the current
+/// UIViewController for you without requiring you to call this method. If you implement
+/// viewDidAppear in your UIViewController but do not call [super viewDidAppear:], that screen class
+/// will not be automatically tracked. The class name can optionally be overridden by calling this
+/// method in the viewDidAppear callback of your UIViewController and specifying the
+/// screenClassOverride parameter.
+///
+/// If your app does not use a distinct UIViewController for each screen, you should call this
+/// method and specify a distinct screenName each time a new screen is presented to the user.
+///
+/// The screen name and screen class remain in effect until the current UIViewController changes or
+/// a new call to setScreenName:screenClass: is made.
+///
+/// @param screenName The name of the current screen. Should contain 1 to 36 characters. Set to nil
+///     to clear the current screen name.
+/// @param screenClassOverride The name of the screen class. Should contain 1 to 36 characters. By
+///     default this is the class name of the current UIViewController. Set to nil to revert to the
+///     default class name.
++ (void)setScreenName:(nullable NSString *)screenName
+          screenClass:(nullable NSString *)screenClassOverride;
+
 @end

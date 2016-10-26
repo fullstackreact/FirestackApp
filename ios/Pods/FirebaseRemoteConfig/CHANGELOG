@@ -1,11 +1,15 @@
-Version 1.2.1
+Version 1.3.1
+==================================
+Resolved Issues:
+- Better documentation on the public headers.
+
+Version 1.3.0
 ==================================
 Features:
 -  Support user property targeting for analytics abilities.
 
 Resolved Issues:
 - Fix critical crashes due to concurrent fetches, make it more thread safe.
-
 
 Version 1.2.0
 ==================================
