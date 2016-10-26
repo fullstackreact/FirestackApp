@@ -15,7 +15,7 @@ export class LogEvent extends React.Component {
     firestack.analytics.logEventWithName('simpleEvent', {
       createdAt: new Date().getTime(),
       from: 'FirestackApp'
-    })
+    }).then(() => console.log('event logged'));
   }
 
   render() {
