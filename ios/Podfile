@@ -17,5 +17,6 @@ end
 
 target 'FirestackApp' do
   firestack_pods
+  pod 'RNFS', :path => './node_modules/react-native-fs'
   pod 'DCTAuth', :git => 'https://github.com/danielctull/DCTAuth.git'
 end
