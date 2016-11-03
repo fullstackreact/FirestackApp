@@ -10,12 +10,19 @@ import List from '../../components/List/List'
 import appStyles from '../../styles/app';
 
 import Chat from './Demos/Chat';
+import Ordering from './Demos/Ordering';
 
 export const Routes = {
   'Chat example': {
     route: {
       title: 'Chat example',
       Component: Chat
+    }
+  },
+  'Ordering example': {
+    route: {
+      title: 'Ordering example',
+      Component: Ordering
     }
   }
 }
