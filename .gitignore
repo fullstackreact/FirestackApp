@@ -40,8 +40,5 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 Releases/
-ios/Pods
-config/development.ios.js
-config/development.js
 coverage/
-GoogleService-Info.plist
+ios/Pods/

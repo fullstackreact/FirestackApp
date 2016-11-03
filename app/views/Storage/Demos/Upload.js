@@ -10,7 +10,6 @@ import {
 import { 
   Container, Header, Title, Content, Button, Spinner
 } from 'native-base';
-import RNFS from 'react-native-fs';
 
 import appStyles from '../../../styles/app';
 import { UploadedImage } from '../components/UploadedImage';
