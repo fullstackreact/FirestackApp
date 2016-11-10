@@ -12,6 +12,7 @@ import List from '../../components/List/List'
 import Email from './Demos/Email';
 import Providers from './Demos/Providers';
 import Anonymous from './Demos/Anonymous';
+import ErrorHandling from './Demos/ErrorHandling';
 
 export const Routes = {
   'email': {
@@ -30,6 +31,12 @@ export const Routes = {
     route: {
       title: 'Anonymous login',
       Component: Anonymous
+    }
+  },
+  'error_handling': {
+    route: {
+      title: 'Error handling',
+      Component: ErrorHandling
     }
   }
 }
