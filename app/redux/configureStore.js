@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { bindActionCreatorsToStore } from 'redux-module-builder';
-import { bindActionCreators, compose } from 'redux'
+import { compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import {persistStore, autoRehydrate} from 'redux-persist'
 import {AsyncStorage} from 'react-native'
