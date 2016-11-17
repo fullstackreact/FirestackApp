@@ -6,10 +6,10 @@ import {
 } from 'react-native'
 
 import env from '../../../../config/environment';
-import { Container, 
-  Content, Card, CardItem, 
-  Thumbnail, Text, 
-  Button } from 'native-base';
+// import { Container, 
+//   Content, Card, CardItem, 
+//   Thumbnail, Text, 
+//   Button } from 'native-base';
 
 import appStyles from '../../../styles/app';
 
@@ -40,8 +40,8 @@ export class SignedIn extends React.Component {
   render() {
     const { user } = this.props;
     return (
-      <Container> 
-        <Content>
+      <View> 
+        <View>
            <Card>
               <CardItem >                       
                   <Text>You are signed in</Text>
@@ -61,8 +61,8 @@ export class SignedIn extends React.Component {
                 </Button>
             </CardItem>
          </Card>
-        </Content>
-      </Container>
+        </View>
+      </View>
     )
   }
 
