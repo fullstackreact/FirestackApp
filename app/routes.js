@@ -13,6 +13,7 @@ import Messaging, { Routes as MessagingRoutes } from './views/Messaging';
 import Presence, { Routes as PresenceRoutes } from './views/Presence'
 import Analytics, { Routes as AnalyticsRoutes } from './views/Analytics';
 import Storage, { Routes as StorageRoutes } from './views/Storage';
+import RemoteConfig, { Routes as RemoteConfigRoutes } from './views/RemoteConfig';
 
 export type Route = {
   key: String,
@@ -62,6 +63,13 @@ export const exampleRoutes = {
       Component: Storage
     },
     children: StorageRoutes
+  },
+  'remoteConfig': {
+    route: {
+      title: 'Remote Config',
+      Component: RemoteConfig
+    },
+    children: RemoteConfigRoutes
   }
 }
 
