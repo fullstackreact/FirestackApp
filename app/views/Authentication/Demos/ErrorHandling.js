@@ -26,8 +26,8 @@ export class ErrorHandling extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
-    firestack.auth.listenForAuth((user) => {
-      console.log('user -->', user);
+    this.unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
+      console.log('auth state changed', user);
     });
   }
 
@@ -35,6 +35,9 @@ export class ErrorHandling extends React.Component {
   componentWillUnmount() {
     const {firestack} = this.props;
     firestack.auth.unlistenForAuth();
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   generateError(key) {
@@ -43,7 +46,7 @@ export class ErrorHandling extends React.Component {
     return () => {
       switch(key) {
         case ERRORS['badUsernamePassword']:
-          firestack.auth.signInWithEmail('ari@fullstack.io', 'definitely_not_my_password')
+          firestack.auth().signInWithEmailAndPassword('ari@fullstack.io', 'definitely_not_my_password')
           .then(user => console.log('Success'))
           .catch(err => {
             console.log('Error with signInWithEmail', err);

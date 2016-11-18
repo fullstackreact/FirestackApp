@@ -28,9 +28,12 @@ export class Email extends React.Component {
   componentWillMount() {
     const {firestack} = this.props;
 
-    firestack.auth.listenForAuth((u) => {
-      console.log('listenForAuth ->', u);
+    this.unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
+      console.log('auth state changed', user);
     });
+    // firestack.auth.listenForAuth((u) => {
+    //   console.log('listenForAuth ->', u);
+    // });
   }
 
   fillInFields() {
@@ -44,7 +47,7 @@ export class Email extends React.Component {
     const {firestack} = this.props;
     const { email, password } = this.state;
 
-    firestack.auth.signInWithEmail(email, password)
+    firestack.auth().signInWithEmailAndPassword(email, password)
       .then(u => {
         console.log('Signed in!', u);
         this.setState({
@@ -69,7 +72,9 @@ export class Email extends React.Component {
 
   componentWillUnmount() {
     const {firestack} = this.props;
-    firestack.auth.unlistenForAuth();
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 
   render() {
