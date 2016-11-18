@@ -1,9 +1,9 @@
 {
-  "presets": ["es2015", "react-native"],
+  "presets": ["react-native"],
   "plugins": ["syntax-async-functions", "transform-regenerator"],
   "env": {
     "test": {
-      "presets": ["es2015", "react-native"]
+      "presets": ["react-native"]
     }
   }
 }

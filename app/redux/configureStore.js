@@ -42,12 +42,14 @@ export const configureStore = (userInitialState = {}) => {
     finalInitialState
   );
   
-  const persistor = persistStore(store, {
-    storage: AsyncStorage, 
-    blacklist: ['firestack']
-  });
+  if (process.env.NODE_ENV === 'development') {
+    const persistor = persistStore(store, {
+      storage: AsyncStorage, 
+      blacklist: ['firestack']
+    });
+    persistor.purge();
+  }
 
-  // persistor.purge();
 
   firestack.setStore(store);
 

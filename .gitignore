@@ -42,3 +42,7 @@ android/keystores/debug.keystore
 Releases/
 coverage/
 ios/Pods/
+Debug-iphonesimulator
+Release-iphonesimulator
+testbuild
+ios/main.jsbundle*

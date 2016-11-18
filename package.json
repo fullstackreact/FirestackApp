@@ -10,6 +10,8 @@
     "preset": "jest-react-native"
   },
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "firebase": "^3.3.2",
     "native-base": "^0.5.9",
     "react": "15.3.1",
@@ -27,14 +29,22 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "appium": "^1.6.0",
     "babel-jest": "^15.0.0",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-regenerator": "^6.16.1",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-native": "^1.9.0",
+    "colors": "^1.1.2",
+    "enzyme": "^2.6.0",
     "jest": "^15.1.1",
     "jest-react-native": "^15.0.0",
-    "react-test-renderer": "^15.3.1"
+    "react-addons-test-utils": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-native-mock": "^0.2.7",
+    "react-test-renderer": "^15.3.1",
+    "wd": "^1.0.0",
+    "yiewd": "^0.6.0"
   }
 }
