@@ -538,7 +538,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 8L3TJYDU4E;
+						DevelopmentTeam = DEB2RAY5A4;
 					};
 				};
 			};
@@ -901,7 +901,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 76;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 8L3TJYDU4E;
+				DEVELOPMENT_TEAM = DEB2RAY5A4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -931,7 +931,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.fullstack.FirestackExample2;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fullstack.FirestackExample;
 				PRODUCT_NAME = FirestackApp;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -948,7 +948,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 76;
-				DEVELOPMENT_TEAM = 8L3TJYDU4E;
+				DEVELOPMENT_TEAM = DEB2RAY5A4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -978,7 +978,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.fullstack.FirestackExample2;
+				PRODUCT_BUNDLE_IDENTIFIER = io.fullstack.FirestackExample;
 				PRODUCT_NAME = FirestackApp;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = YES;
