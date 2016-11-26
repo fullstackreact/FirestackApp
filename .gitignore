@@ -46,3 +46,4 @@ Debug-iphonesimulator
 Release-iphonesimulator
 testbuild
 ios/main.jsbundle*
+config/development.js

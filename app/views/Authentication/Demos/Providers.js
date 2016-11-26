@@ -36,12 +36,19 @@ export class Providers extends React.Component {
   componentWillMount() {
     const {firestack} = this.props;
     const manager = new OAuthManager('firestackexample')
-    manager.configure(env.auth);
+    manager.configure(env.auth)
+    .then(resp => {
+      console.log('resp ->', resp);
+    })
+    .catch(err => {
+      console.log('error with configure -->', err);
+    })
 
     this.manager = manager;
 
     manager.savedAccounts()
       .then(resp => {
+console.log('accounts ->', resp);
         const { accounts } = this.state;
         let newAccounts = {};
         resp.accounts
@@ -65,7 +72,7 @@ export class Providers extends React.Component {
           const newAccounts = Object.assign({}, accounts, {
             [provider]: resp.response
           });
-  console.log('account', resp);
+  console.log('account', resp.response);
           this.setState({
             accounts: newAccounts
           });
@@ -163,7 +170,7 @@ export class Providers extends React.Component {
                 warning
                 key={provider}
                 onPress={this.logoutWith(provider)}>
-                  Logout of {provider}
+                  {`Logout with ${provider}`}
               </Button>
             );
           } else {
@@ -172,7 +179,7 @@ export class Providers extends React.Component {
                 primary
                 key={provider}
                 onPress={this.loginWith(provider)}>
-                  Login with {provider}
+                  {`Login with ${provider}`}
               </Button>
             )
           }
@@ -184,7 +191,7 @@ export class Providers extends React.Component {
                 info
                 key={provider}
                 onPress={this.makeRequest(provider)}>
-                  Make request to {provider}
+                  Make request
               </Button>
             );
           }
