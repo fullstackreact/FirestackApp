@@ -34,7 +34,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Twitter</string>
+			<string>Twitter and Github</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>firestackexample</string>

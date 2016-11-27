@@ -146,6 +146,17 @@ export class Providers extends React.Component {
               {id: 3, text: `domain: ${data.domain}`}
             ]
           });
+        } 
+      } else if (provider === 'github') {
+        url = 'https://api.github.com/user/repos'
+        handleResp = (resp) => {
+          const {data} = resp;
+          this.setState({
+            data: data.map(repo => ({
+              id: repo.id,
+              text: repo.name
+            }))
+          });
         }
       }
 
