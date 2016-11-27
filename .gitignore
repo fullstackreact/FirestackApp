@@ -48,3 +48,4 @@ testbuild
 ios/main.jsbundle*
 config/development.js
 ios/FirestackApp/FirestackApp.entitlements
+config/development.android.js
