@@ -48,7 +48,6 @@ export class Providers extends React.Component {
 
     manager.savedAccounts()
       .then(resp => {
-console.log('accounts ->', resp);
         const { accounts } = this.state;
         let newAccounts = {};
         resp.accounts
@@ -64,6 +63,7 @@ console.log('accounts ->', resp);
   }
 
   loginWith(provider) {
+    const {firestack} = this.props;
     return (evt) => {
       this.manager
         .authorize(provider, opts[provider])
@@ -72,7 +72,14 @@ console.log('accounts ->', resp);
           const newAccounts = Object.assign({}, accounts, {
             [provider]: resp.response
           });
-  console.log('account', resp.response);
+          const {access_token, access_token_secret} = resp.response.credentials;
+  firestack.auth.signInWithProvider(provider, access_token, access_token_secret)
+    .then(resp => {
+      console.log('resp from signInWithProvider ->', resp);
+    })
+    .catch(err => {
+      console.log('error with signInWithProvider: ', err);
+    });
           this.setState({
             accounts: newAccounts
           });
@@ -191,7 +198,7 @@ console.log('accounts ->', resp);
                 info
                 key={provider}
                 onPress={this.makeRequest(provider)}>
-                  Make request
+                  {`Make request on ${provider}`}
               </Button>
             );
           }

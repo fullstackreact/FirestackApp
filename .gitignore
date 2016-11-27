@@ -47,3 +47,4 @@ Release-iphonesimulator
 testbuild
 ios/main.jsbundle*
 config/development.js
+ios/FirestackApp/FirestackApp.entitlements
