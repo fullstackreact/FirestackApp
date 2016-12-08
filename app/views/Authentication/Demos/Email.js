@@ -8,7 +8,7 @@ import {
 
 import env from '../../../../config/environment';
 
-import { Container, Header, Title, Content, List, ListItem, InputGroup, Input, Icon, Button } from 'native-base';
+import { Container, Title, Content, List, ListItem, InputGroup, Input, Icon, Button } from 'native-base';
 
 import SignedIn from '../components/SignedIn';
 import appStyles from '../../../styles/app';

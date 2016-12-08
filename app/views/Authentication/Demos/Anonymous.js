@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 
 import env from '../../../../config/environment';
-import { Container, Header, Title, Content, Button } from 'native-base';
+import { Container, Title, Content, Button } from 'native-base';
 import appStyles from '../../../styles/app';
 
 export class Anonymous extends React.Component {

@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 import { 
-  Container, Header, Title, Content, Button, Spinner
+  Container, Title, Content, Button, Spinner
 } from 'native-base';
 
 import appStyles from '../../../styles/app';

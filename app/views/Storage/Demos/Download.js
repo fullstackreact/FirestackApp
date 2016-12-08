@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 import env from '../../../../config/environment';
-import { Container, Header, Title, Content, Button, Spinner } from 'native-base';
+import { Container, Title, Content, Button, Spinner } from 'native-base';
 import appStyles from '../../../styles/app';
 import { UploadedImage } from '../components/UploadedImage';
 
