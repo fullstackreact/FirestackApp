@@ -48,3 +48,4 @@ ios/main.jsbundle*
 testbuild/
 javac-services.0.log*
 config/development.js
+config/development.android.js
