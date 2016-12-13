@@ -104,7 +104,8 @@ export class Providers extends React.Component {
       }
 
       if (provider === 'twitter') {
-        url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+        url = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
+        // url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
         opts = {
           params: {
             screen_name: 'auser'
