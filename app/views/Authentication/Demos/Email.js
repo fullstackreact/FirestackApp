@@ -8,7 +8,9 @@ import {
 
 import env from '../../../../config/environment';
 
-// import { Container, Header, Title, Content, List, ListItem, InputGroup, Input, Icon, Button } from 'native-base';
+import { Container, Header, Title, Content, List, ListItem, 
+  InputGroup, Input, Icon
+  } from 'native-base';
 
 import SignedIn from '../components/SignedIn';
 import appStyles from '../../../styles/app';
@@ -113,21 +115,10 @@ export class Email extends React.Component {
             </ListItem>
                       
             <ListItem>
-              <Button
-                block
-                info
-                onPress={this.loginWithEmail.bind(this)}>
-                  <Text>Sign in</Text>
-              </Button>
+              
             </ListItem>
 
             <ListItem>
-              <Button
-                block
-                info
-                onPress={this.fillInFields.bind(this)}>
-                  <Text>Fill forms with demo user info</Text>
-              </Button>
             </ListItem>
           </List>
         </View>

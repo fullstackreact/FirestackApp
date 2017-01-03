@@ -18,7 +18,7 @@ export class Anonymous extends React.Component {
 
   loginAnonymously(evt) {
     const {firestack} = this.props;
-    firestack.auth.signInAnonymously()
+    this.unsub = firestack.auth().signInAnonymously()
       .then(u => {
         console.log('Signed in!', u);
       })
@@ -29,6 +29,9 @@ export class Anonymous extends React.Component {
 
   componentWillUnmount() {
     const {firestack} = this.props;
+    if (this.unsub) {
+      this.unsub();
+    }
   }
 
   render() {

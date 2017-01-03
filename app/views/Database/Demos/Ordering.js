@@ -22,7 +22,7 @@ import Post from '../components/Post'
 // Make a common query
 const firebaseRefName = 'posts/';
 const query = (firestack, ordering='first') => {
-  let ref = firestack.database
+  let ref = firestack.database()
             .ref(firebaseRefName)
             .orderByChild('timestamp');
 
@@ -31,7 +31,7 @@ const query = (firestack, ordering='first') => {
   } else {
     ref = ref.limitToLast(3)
   }
-  return ref.once('value');
+  return {ref, listener: ref.once('value')}
 }
 
 const getPostsFromSnapshot = (snapshot) => {
@@ -47,6 +47,8 @@ class Timeline extends Component {
       UIManager.setLayoutAnimationEnabledExperimental(true)
     }
 
+    this.ref = null;
+
     this.state = {
       isRefreshing: false,
       updateNotification: null,
@@ -57,8 +59,9 @@ class Timeline extends Component {
   componentDidMount() {
     const {firestack} = this.props;
 
-    query(firestack, 'last')
-      .then((snapshot) => {
+    const {ref, listener} = query(firestack, 'last')
+    this.ref = ref;
+    listener.then((snapshot) => {
         this.setState({
           posts: getPostsFromSnapshot(snapshot)
         })
@@ -72,7 +75,9 @@ class Timeline extends Component {
   }
 
   componentWillUnmount() {
-    this.props.firestack.database.ref(firebaseRefName).off();
+    if (this.ref) {
+      this.ref.off('once');
+    }
   }
 
   componentDidUpdate() {

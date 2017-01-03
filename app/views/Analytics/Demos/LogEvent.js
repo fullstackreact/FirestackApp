@@ -12,10 +12,10 @@ export class LogEvent extends React.Component {
 
   _logEvent() {
     const {firestack} = this.props;
-    firestack.analytics.logEventWithName('simpleEvent', {
+    firestack.analytics().logEvent('simpleEvent', {
       createdAt: new Date().getTime(),
       from: 'FirestackApp'
-    }).then(() => console.log('event logged'));
+    });
   }
 
   render() {
