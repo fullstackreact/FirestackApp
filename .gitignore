@@ -42,3 +42,8 @@ android/keystores/debug.keystore
 Releases/
 coverage/
 ios/Pods/
+Release-iphonesimulator/
+ios/FirestackApp/FirestackApp.entitlements
+ios/main.jsbundle
+ios/main.jsbundle.meta
+testbuild/
