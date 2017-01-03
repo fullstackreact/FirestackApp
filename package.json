@@ -10,10 +10,13 @@
     "preset": "jest-react-native"
   },
   "dependencies": {
+    "babel-types": "^6.21.0",
+    "babylon": "^6.14.1",
     "firebase": "^3.3.2",
+    "lodash": "^4.17.4",
     "native-base": "^0.5.20",
     "react": "15.4.1",
-    "react-native": "0.38.0",
+    "react-native": "^0.39.2",
     "react-native-firestack": "^2.3.0",
     "react-native-fs": "^2.0.1-rc.2",
     "react-native-gifted-chat": "0.0.10",
