@@ -1,5 +1,0 @@
-module.exports = {
-  firestack: {
-    debug: '*',
-  }
-}

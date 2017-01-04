@@ -22,12 +22,13 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-# Android/IJ
+# Android/IntelliJ
 #
-*.iml
+build/
 .idea
 .gradle
 local.properties
+*.iml
 
 # node.js
 #
@@ -38,12 +39,15 @@ npm-debug.log
 buck-out/
 \.buckd/
 android/app/libs
-android/keystores/debug.keystore
+*.keystore
+ios/Pods
+testbuild/
+ios/main.jsbundle.meta
+ios/main.jsbundle
 Releases/
-coverage/
-ios/Pods/
 Release-iphonesimulator/
 ios/FirestackApp/FirestackApp.entitlements
-ios/main.jsbundle
-ios/main.jsbundle.meta
-testbuild/
+coverage/
+ios/Pods
+config/development.js
+config/development.android.js

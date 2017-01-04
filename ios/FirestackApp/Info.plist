@@ -50,6 +50,16 @@
 				<string>com.googleusercontent.apps.223760557072-t8hd07q4lm552na0s1id3cjj39927ptv</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>slack</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>firestackexample</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>76</string>

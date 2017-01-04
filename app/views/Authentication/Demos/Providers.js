@@ -18,7 +18,9 @@ const supportedProviders = OAuthManager.providers();
 const opts = {
   google: {scopes: 'email'},
   facebook: {},
-  twitter: {}
+  twitter: {},
+  github: {},
+  slack: {scopes: 'channels:read'}
 }
 
 export class Providers extends React.Component {
@@ -37,10 +39,11 @@ export class Providers extends React.Component {
     const {firestack} = this.props;
     const manager = new OAuthManager('firestackexample')
     manager.configure(env.auth);
-
     this.manager = manager;
+  }
 
-    manager.savedAccounts()
+  componentDidMount() {
+    this.manager.savedAccounts()
       .then(resp => {
         const { accounts } = this.state;
         let newAccounts = {};
@@ -65,7 +68,6 @@ export class Providers extends React.Component {
           const newAccounts = Object.assign({}, accounts, {
             [provider]: resp.response
           });
-  console.log('account', resp);
           this.setState({
             accounts: newAccounts
           });
@@ -133,16 +135,30 @@ export class Providers extends React.Component {
             ]
           });
         }
+      } else if (provider === 'github') {
+        url = '/users/auser/events'
+        handleResp = resp => {
+          const {data} = resp;
+          const newData = data.map(d => ({id: d.id, text: `${d.type}: ${d.repo.name}`}))
+          this.setState({ data: newData });
+        }
+      } else if (provider === 'slack') {
+        url = '/channels.list'
+        handleResp = resp => {
+          const {channels} = resp.data
+          const newData = channels.map(d => ({id: d.id, text: `${d.name}`}))
+          this.setState({ data: newData });
+        }
+        opts.params = { token: 'access_token' }
       }
 
       this.manager
           .makeRequest(provider, url, opts)
           .then(resp => {
-            console.log('resp ->', resp);
             handleResp(resp);
           })
           .catch(err => {
-            console.log('error ->', err);
+            console.log('caught an error', err);
           });
     }
   }
