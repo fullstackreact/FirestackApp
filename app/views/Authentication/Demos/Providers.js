@@ -16,7 +16,7 @@ import OAuthManager from 'react-native-oauth';
 const supportedProviders = OAuthManager.providers();
 
 const opts = {
-  google: {scopes: 'email'},
+  google: {scopes: 'email,profile'},
   facebook: {},
   twitter: {},
   github: {},
