@@ -22,7 +22,7 @@ export class UploadDemo extends React.Component {
     
     const {firestack} = this.props;
 
-    localDir = firestack.constants.DOCUMENT_DIRECTORY_PATH;
+    localDir = firestack.storage().DOCUMENT_DIRECTORY_PATH;
     this.state = {
       localFileExists: false,
       uploading: false,
