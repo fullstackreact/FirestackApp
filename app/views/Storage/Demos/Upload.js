@@ -35,27 +35,27 @@ export class UploadDemo extends React.Component {
     const {firestack} = this.props;
     // firestack.storage().setStorageUrl('firestack-example.appspot.com');
 
-    CameraRoll.getPhotos({
-      first: 1
-    }).then(data => {
-      const assets = data.edges.map(asset => asset.node.image);
-      if (assets && assets.length > 0) { 
-        firestack.storage().getRealPathFromURI(assets[0].uri)
-        .then(path => {
-          localFile = path;
-          this.setState({
-            localFileExists: true
-          });
-        });
-      } else {
-        throw new Error('no assets yet');
-      }
-    }).catch(err => {
-      this.setState({
-        localFileExists: false,
-        error: err
-      });
-    });
+    // CameraRoll.getPhotos({
+    //   first: 1
+    // }).then(data => {
+    //   const assets = data.edges.map(asset => asset.node.image);
+    //   if (assets && assets.length > 0) { 
+    //     firestack.storage().getRealPathFromURI(assets[0].uri)
+    //     .then(path => {
+    //       localFile = path;
+    //       this.setState({
+    //         localFileExists: true
+    //       });
+    //     });
+    //   } else {
+    //     throw new Error('no assets yet');
+    //   }
+    // }).catch(err => {
+    //   this.setState({
+    //     localFileExists: false,
+    //     error: err
+    //   });
+    // });
     // console.log('cat cat', cat);
     // RNFS.writeFile(localFile, cat, 'utf8')
     // .then((success) => {

@@ -26,7 +26,6 @@ export class DownloadDemo extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
-    firestack.storage.setStorageUrl('firestack-example.appspot.com');
   }
 
   componentWillUnmount() {
@@ -35,7 +34,7 @@ export class DownloadDemo extends React.Component {
 
   downloadByUrl() {
       const {firestack} = this.props;
-      const storage = firestack.storage;
+      const storage = firestack.storage();
       const ref = storage.ref(CAT_PATH);
       const tmpDir = firestack.constants.TEMP_DIRECTORY_PATH;
       const localPath = `${tmpDir}/downloadedCat.jpg`;
