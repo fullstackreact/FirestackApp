@@ -13,25 +13,25 @@ export class Setup extends React.Component {
   componentWillMount() {
     const {firestack} = this.props;
 
-    firestack.cloudMessaging.getToken().then(function (token) {
+    firestack.messaging().getToken().then(function (token) {
       console.log('device token', token);
     });
 
-    firestack.cloudMessaging.subscribeToTopic("setup_topic").then(function (topic) {
+    firestack.messaging().subscribeToTopic("setup_topic").then(function (topic) {
         console.log('Subscribe:'+topic);
-    }).catch(function(err){
+    }).catch(function(err) {
        console.error(err);
     });
 
-    firestack.cloudMessaging.onRemoteMessage(notification => {
+    firestack.messaging().onRemoteMessage(notification => {
       console.log('Received remote notification', notification);
     })
 
-    firestack.cloudMessaging.onLocalMessage(notification => {
+    firestack.messaging().onLocalMessage(notification => {
       console.log('Received local notification', notification);
     })
 
-    // firestack.cloudMessaging.listenForReceiveNotification((msg) =>{
+    // firestack.messaging.listenForReceiveNotification((msg) =>{
     //   console.log('Receive Messages:'+msg.data);
     //   console.log('Receive Messages:'+msg.notification);
     // });
@@ -39,7 +39,7 @@ export class Setup extends React.Component {
 
   _sendHi() {
     const {firestack} = this.props;
-    firestack.cloudMessaging.sendMessage({
+    firestack.messaging().sendMessage({
       alertBody: "Some message",
       alertAction: "view"
     })

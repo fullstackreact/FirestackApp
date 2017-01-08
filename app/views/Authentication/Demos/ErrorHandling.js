@@ -26,7 +26,7 @@ export class ErrorHandling extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
-    this.unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
+    this.unsubscribe = firestack.auth().onAuthStateChanged(function(user) {
       console.log('auth state changed', user);
     });
   }
@@ -34,7 +34,6 @@ export class ErrorHandling extends React.Component {
   
   componentWillUnmount() {
     const {firestack} = this.props;
-    firestack.auth.unlistenForAuth();
     if (this.unsubscribe) {
       this.unsubscribe();
     }

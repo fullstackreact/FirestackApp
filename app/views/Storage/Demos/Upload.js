@@ -33,14 +33,14 @@ export class UploadDemo extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
-    firestack.storage.setStorageUrl('firestack-example.appspot.com');
+    // firestack.storage().setStorageUrl('firestack-example.appspot.com');
 
     CameraRoll.getPhotos({
       first: 1
     }).then(data => {
       const assets = data.edges.map(asset => asset.node.image);
       if (assets && assets.length > 0) { 
-        firestack.storage.getRealPathFromURI(assets[0].uri)
+        firestack.storage().getRealPathFromURI(assets[0].uri)
         .then(path => {
           localFile = path;
           this.setState({
@@ -77,7 +77,7 @@ export class UploadDemo extends React.Component {
 
   _uploadFile() {
     const {firestack} = this.props;
-    const storage = firestack.storage;
+    const storage = firestack.storage();
 
     this.setState({
       fileUploaded: null,
@@ -87,7 +87,7 @@ export class UploadDemo extends React.Component {
         contentType: 'image/jpg'
       }).then(res => {
         // And store it
-        const storageRef = firestack.storage.ref(res.fullPath); 
+        const storageRef = firestack.storage().ref(res.fullPath); 
         storageRef.downloadUrl()
         .then(filepath => {
           console.log('filepath ->', filepath);

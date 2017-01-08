@@ -11,7 +11,7 @@ export class Online extends React.Component {
 
   componentWillMount() {
     const {firestack} = this.props;
-    const presence = firestack.presence;
+    const presence = firestack.presence();
 
     presence.on('auser')
       .setOnline()
