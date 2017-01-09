@@ -34,29 +34,32 @@ export class Chat extends React.Component {
     const {firestack} = this.props;
     const ref = firestack.database().ref(firebaseRefName)
     
+    this.ref = ref;
     ref
     .orderByChild('createdAt')
     .endAt('temp-id-484903')
     .limitToLast(10)
           .on('child_added', (snapshot) => {
-    //         const msg = {
-    //           ...snapshot.val()
-    //         };
+            const msg = {
+              ...snapshot.val()
+            };
 
-    //         const {messages} = this.state;
-    //         const msgIds = messages.map(m => m._id);
-    //         console.log(msgIds);
+            const {messages} = this.state;
+            const msgIds = messages.map(m => m._id);
+            console.log(msgIds);
 
-    //         if (msgIds.indexOf(msg._id) < 0) {
-    //           this.setState({
-    //             messages: GiftedChat.append(this.state.messages, msg)
-    //           });
-    //         }
+            if (msgIds.indexOf(msg._id) < 0) {
+              this.setState({
+                messages: GiftedChat.append(this.state.messages, msg)
+              });
+            }
           });
   }
 
   componentWillUnmount() {
-    this.props.firestack.database.ref(firebaseRefName).off();
+    if (this.ref) {
+      this.ref.off('child_added', this.handlePostUpdate);
+    }
   }
 
   messagesFromSnapshot(snapshot) {
