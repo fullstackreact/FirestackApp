@@ -64,6 +64,7 @@ export class Providers extends React.Component {
       this.manager
         .authorize(provider, opts[provider])
         .then(resp => {
+          console.debug(`Received`, resp);
           const {accounts} = this.state;
           const newAccounts = Object.assign({}, accounts, {
             [provider]: resp.response
