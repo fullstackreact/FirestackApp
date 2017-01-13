@@ -19,7 +19,9 @@ const opts = {
   google: {scopes: 'email,profile'},
   facebook: {},
   twitter: {},
-  github: {},
+  github: {
+    scopes: 'notifications,profile'
+  },
   slack: {scopes: 'channels:read'}
 }
 
@@ -137,15 +139,16 @@ export class Providers extends React.Component {
           });
         }
       } else if (provider === 'github') {
-        url = '/users/auser/events'
+        url = '/notifications'
         handleResp = resp => {
           const {data} = resp;
-          const newData = data.map(d => ({id: d.id, text: `${d.type}: ${d.repo.name}`}))
+          const newData = data.map(d => ({id: d.id, text: `${d.reason}: ${d.repository.name}`}))
           this.setState({ data: newData });
         }
       } else if (provider === 'slack') {
         url = '/channels.list'
         handleResp = resp => {
+          console.log('resp ->', resp);
           const {channels} = resp.data
           const newData = channels.map(d => ({id: d.id, text: `${d.name}`}))
           this.setState({ data: newData });

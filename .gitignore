@@ -49,6 +49,7 @@ Release-iphonesimulator/
 ios/FirestackApp/FirestackApp.entitlements
 coverage/
 ios/Pods
+config/all.js
 config/development.js
 config/development.android.js
 

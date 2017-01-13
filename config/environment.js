@@ -1,17 +1,22 @@
 import { Platform } from 'react-native';
+import _ from 'lodash';
+
+const NODE_ENV = process.env.NODE_ENV;
 
 let defaultEnv = {
   NAME: 'DoGood'
 }
 
-const NODE_ENV = process.env.NODE_ENV;
+let general = {};
+try {
+  general = require('./all');
+} catch (e) {}
+
 let env = {}
 if (NODE_ENV === 'development') {
   env = require('./development')
 }
 
-try {
-  env = Object.assign({}, env, require(`${NODE_ENV}.${Platform.OS}`));
-} catch (e) {}
+env = _.merge({}, general, env);
 
 module.exports = Object.assign({}, defaultEnv, env);
