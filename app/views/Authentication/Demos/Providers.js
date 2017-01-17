@@ -17,7 +17,9 @@ const supportedProviders = OAuthManager.providers();
 
 const opts = {
   google: {scopes: 'email,profile'},
-  facebook: {},
+  facebook: {
+    scopes: 'user_friends,email'
+  },
   twitter: {},
   github: {
     scopes: 'notifications,profile'
