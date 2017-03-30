@@ -11,6 +11,9 @@ export const types = createConstants('navigation')(
   'JUMP_TO_KEY',
   'JUMP_TO_INDEX',
   'RESET',
+  'FORWARD',
+  'REPLACE_AT',
+  'REPLACE_AT_INDEX',
   'TOGGLE_MENU'
 )
 
@@ -27,6 +30,9 @@ export const actions = {
   jumpToKey: (key) => ({type: types.JUMP_TO_KEY, key}),
   jumpToIndex: (index) => ({type: types.JUMP_TO_INDEX, index}),
   reset: (nextRoutes, index) => ({type: types.RESET, payload: {index, nextRoutes}}),
+  forward: () => ({type: types.FORWARD}),
+  replaceAt: (key, route) => ({type: types.REPLACE_AT, payload: { key, route }}),
+  replaceAtIndex: (index, route) => ({type: types.REPLACE_AT_INDEX, payload: { index, route }}),
   toggleMenu: () => ({type: types.TOGGLE_MENU})
 }
 
@@ -40,6 +46,19 @@ const reset = (state, payload = {}) => {
   const newRoutes = getRoutesForKeys(navRoutes)
 
   return NavUtils.reset(state, newRoutes, newIndex);
+}
+const replaceAt = (state, action) => {
+  let {route, key} = action.payload;
+  if (typeof route === "string")
+    route = routes[route];
+  return NavUtils.replaceAt(state, key, route);
+}
+const replaceAtIndex = (state, action) => {
+  let {route, index} = action.payload;
+  if (typeof route === "string")
+    route = routes[route];
+
+  return NavUtils.replaceAtIndex(state, index, route);
 }
 
 export const reducer = createReducer({
@@ -74,10 +93,14 @@ export const reducer = createReducer({
     return NavUtils.jumpToIndex(state, index);
   },
   [types.RESET]: (state, {payload}) => reset(state, payload),
+  [types.FORWARD]: state => NavUtils.forward(state),
+  [types.REPLACE_AT]: (state, action) => replaceAt(state, action),
+  [types.REPLACE_AT_INDEX]: (state, action) => replaceAtIndex(state, action),
   [types.TOGGLE_MENU]: (state) => ({
     ...state,
     showMenu: !state.showMenu
   })
+  
 });
 
 export const initialState = {
